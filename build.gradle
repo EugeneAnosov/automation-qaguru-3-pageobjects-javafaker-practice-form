@@ -14,7 +14,7 @@ dependencies {
     testImplementation (
             "com.codeborne:selenide:$selenideVersion",
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
-            "com.github.javafaker:javafaker:$javaFakerversion")
+            "com.github.javafaker:javafaker:1.0.2")
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
 }
 

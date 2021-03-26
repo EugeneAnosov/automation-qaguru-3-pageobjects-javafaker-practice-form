@@ -1,15 +1,13 @@
 package pageobjects;
 
+import tests.TestBase;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-import com.github.javafaker.Faker;
-
-public class PracticeFormRegistrationPage {
-
-    Faker faker = new Faker();
+public class PracticeFormRegistrationPage extends TestBase {
 
     String baseUrl = "https://demoqa.com/automation-practice-form";
 
