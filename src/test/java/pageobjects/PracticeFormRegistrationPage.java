@@ -1,29 +1,17 @@
 package pageobjects;
 
 import tests.TestBase;
+import tests.TestData;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class PracticeFormRegistrationPage extends TestBase {
 
-    String baseUrl = "https://demoqa.com/automation-practice-form";
-
-    String firstName = "Paul",
-            lastName = "McCartney",
-            userEmail = "paul.mccartney@yahoo.com",
-            gender = "Male",
-            userNumber = "2173999999",
-            subject = "Maths",
-            birthdayMonth = "May",
-            birthdayYear = "1990",
-            hobbies = "Music",
-            file = "maxresdefault.jpg",
-            currentAddress = "38 Circle Road str., 333 apt.",
-            city = "Lucknow",
-            state = "Uttar Pradesh";
+    TestData testData = new TestData();
 
     public PracticeFormRegistrationPage openPage() {
         open(baseUrl);
@@ -32,19 +20,19 @@ public class PracticeFormRegistrationPage extends TestBase {
     }
 
     public PracticeFormRegistrationPage fillForm() {
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(userEmail);
-        $(byText(gender)).click();
-        $("#userNumber").setValue(userNumber);
+        $("#firstName").setValue(testData.firstName);
+        $("#lastName").setValue(testData.lastName);
+        $("#userEmail").setValue(testData.userEmail);
+        $(byText(testData.gender)).click();
+        $("#userNumber").setValue(testData.userNumber);
 
-        setBirthdayDate(birthdayMonth, birthdayYear);
+        setBirthdayDate(testData.birthdayMonth, testData.birthdayYear);
 
-        $("#subjectsInput").setValue(subject).pressTab();
-        $(byText(hobbies)).click();
-        $("#uploadPicture").uploadFromClasspath("img/" + file);
+        $("#subjectsInput").setValue(testData.subject).pressTab();
+        $(byText(testData.hobbies)).click();
+        $("#uploadPicture").uploadFromClasspath("img/" + testData.file);
 
-        setCityState(currentAddress, state, city);
+        setCityState(testData.currentAddress, testData.state, testData.city);
 
         return this;
     }
@@ -71,16 +59,16 @@ public class PracticeFormRegistrationPage extends TestBase {
 
     public PracticeFormRegistrationPage assertData() {
         $(".table-responsive").shouldHave(
-                text(firstName + " " + lastName),
-                text(userEmail),
-                text(gender),
-                text(birthdayMonth),
-                text(birthdayYear),
-                text(subject),
-                text(hobbies),
-                text(file),
-                text(currentAddress),
-                text(state + " " + city));
+                text(testData.firstName + " " + testData.lastName),
+                text(testData.userEmail),
+                text(testData.gender),
+                text(testData.birthdayMonth),
+                text(testData.birthdayYear),
+                text(testData.subject),
+                text(testData.hobbies),
+                text(testData.file),
+                text(testData.currentAddress),
+                text(testData.state + " " + testData.city));
 
         return this;
     }

@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeAll;
 public class TestBase {
 
     @BeforeAll
-    static void setup(){
-
+    static void setup() {
         Configuration.startMaximized = true;
+        Configuration.baseUrl = "https://demoqa.com/automation-practice-form";
     }
 }
