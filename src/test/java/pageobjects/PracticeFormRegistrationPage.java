@@ -32,15 +32,15 @@ public class PracticeFormRegistrationPage extends TestBase {
         $(byText(testData.hobbies)).click();
         $("#uploadPicture").uploadFromClasspath("img/" + testData.file);
 
-        setCityState(testData.currentAddress, testData.state, testData.city);
+        setCityState(testData);
 
         return this;
     }
 
-    private void setCityState(String currentAddress, String state, String city) {
-        $("#currentAddress").setValue(currentAddress);
-        $("#react-select-3-input").setValue(state).pressEnter();
-        $("#react-select-4-input").setValue(city).pressEnter();
+    private void setCityState(TestData testData) {
+        $("#currentAddress").setValue(testData.currentAddress);
+        $("#react-select-3-input").setValue(testData.state).pressEnter();
+        $("#react-select-4-input").setValue(testData.city).pressEnter();
     }
 
     private void setBirthdayDate(String birthdayMonth, String birthdayYear) {
